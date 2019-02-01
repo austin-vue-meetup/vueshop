@@ -9,19 +9,13 @@ npm install
 ### Compiles and hot-reloads for development
 
 ```sh
-npm run serve
+npm start
 ```
 
 ### Compiles and minifies for production
 
 ```sh
 npm run build
-```
-
-### Run your tests
-
-```sh
-npm run test
 ```
 
 ### Lints and fixes files
