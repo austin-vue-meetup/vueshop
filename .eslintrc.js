@@ -17,21 +17,12 @@ module.exports = {
     // Only allow debugger in development
     'no-debugger': process.env.PRE_COMMIT ? 'error' : 'off',
     // Only allow `console.log` in development
-    'no-console': process.env.PRE_COMMIT
-      ? ['error', { allow: ['warn', 'error'] }]
-      : 'off',
+    'no-console': process.env.PRE_COMMIT ? ['error', { allow: ['warn', 'error'] }] : 'off',
     'vue/component-name-in-template-casing': [
       'error',
       'PascalCase',
       {
-        ignores: [
-          'component',
-          'template',
-          'transition',
-          'transition-group',
-          'keep-alive',
-          'slot',
-        ],
+        ignores: ['component', 'template', 'transition', 'transition-group', 'keep-alive', 'slot'],
       },
     ],
   },
