@@ -2,11 +2,10 @@
   <div id="app">
     <nav class="navbar navbar-expand navbar-dark bg-secondary">
       <div id="navbarNav" class="collapse navbar-collapse">
-        <ul class="navbar-nav">
-          <li class="nav-item active">
-            <RouterLink class="nav-link" to="/">Home</RouterLink>
-          </li>
-        </ul>
+        <div class="navbar-nav">
+          <RouterLink active-class="active" class="nav-item nav-link" to="/" exact>Home</RouterLink>
+          <RouterLink active-class="active" class="nav-item nav-link" to="/admin">Admin</RouterLink>
+        </div>
       </div>
     </nav>
     <div class="container pt-5">
