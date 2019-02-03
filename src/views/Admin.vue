@@ -12,7 +12,7 @@ export default {
   name: 'Admin',
   methods: {
     initProducts() {
-      this.$store.commit(constants.INIT_PRODUCTS)
+      this.$store.commit(constants.PRODUCTS_INIT)
     },
   },
 }

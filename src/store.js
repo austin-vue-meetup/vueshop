@@ -33,9 +33,9 @@ export default new Vuex.Store({
     products: [],
   },
   mutations: {
-    [constants.INIT_PRODUCTS] (state) {
+    [constants.PRODUCTS_INIT](state) {
       state.products = initialProducts
-    }
+    },
   },
   actions: {},
   plugins: [

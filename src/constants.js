@@ -1,3 +1,3 @@
 export default {
-  INIT_PRODUCTS: 'INIT_PRODUCTS',
+  PRODUCTS_INIT: 'PRODUCTS_INIT',
 }
