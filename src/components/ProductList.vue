@@ -1,9 +1,16 @@
 <script>
+import constants from '@/constants'
+
 export default {
   name: 'ProductList',
   computed: {
     products() {
       return this.$store.state.products
+    },
+  },
+  methods: {
+    initProducts() {
+      this.$store.commit(constants.INIT_PRODUCTS)
     },
   },
 }
@@ -12,6 +19,8 @@ export default {
 <template>
   <div>
     <h1>Behold Our Mighty Products!</h1>
+
+    <a href="#" class="btn btn-sm btn-outline-danger" @click="initProducts">Initialize Products</a>
 
     <div class="card-deck mt-5">
       <div v-for="product in products" :key="product.id" class="card">
