@@ -1,5 +1,8 @@
 <template>
-  <ProductList />
+  <div>
+    <h1>Behold Our Mighty Products!</h1>
+    <ProductList />
+  </div>
 </template>
 
 <script>
