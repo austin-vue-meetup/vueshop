@@ -33,8 +33,21 @@ export default new Vuex.Store({
     products: [],
   },
   mutations: {
+    [constants.PRODUCTS_DELETE](state, productId) {
+      const productIndex = state.products.findIndex((p) => p.id === productId)
+      state.products.splice(productIndex, 1)
+    },
     [constants.PRODUCTS_INIT](state) {
       state.products = initialProducts
+    },
+    [constants.PRODUCTS_SAVE](state, product) {
+      if (product.id) {
+        const productIndex = state.products.findIndex((p) => p.id === product.id)
+        state.products.splice(productIndex, 1, product)
+      } else {
+        product.id = uuid()
+        state.products.push(product)
+      }
     },
   },
   actions: {},
