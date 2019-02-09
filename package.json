@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start": "npm run serve",
+    "start": "concurrently --kill-others \"npm run localserver\"  \"npm run serve\"",
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint:eslint": "eslint --fix",
@@ -14,7 +14,9 @@
     "lint:all:stylelint": "npm run lint:stylelint -- \"src/**/*.{vue,scss}\"",
     "lint:all:markdownlint": "npm run lint:markdownlint -- \"docs/*.md\" \"*.md\"",
     "lint:all:prettier": "npm run lint:prettier -- \"**/*.{js,json,css,scss,vue,html,md}\"",
-    "lint": "run-s lint:all:*"
+    "lint": "run-s lint:all:*",
+    "localserver": "cd server && npm start",
+    "postinstall": "cd server && npm install"
   },
   "dependencies": {
     "bootstrap": "^4.2.1",
@@ -31,6 +33,7 @@
     "@vue/eslint-config-prettier": "^4.0.1",
     "@vue/eslint-config-standard": "^4.0.0",
     "babel-eslint": "^10.0.1",
+    "concurrently": "^4.1.0",
     "eslint": "^5.8.0",
     "eslint-plugin-vue": "^5.1.0",
     "lint-staged": "^8.1.0",
