@@ -1,9 +1,17 @@
 const fastify = require('fastify')()
 const fs = require('fs')
 const uuid = require('uuid')
-const products = require('./products.json')
 
-const PRODUCTS_PATH = './products.json'
+let products, PRODUCTS_PATH
+
+try {
+  require.resolve('./products.local.json')
+  products = require('./products.local.json')
+  PRODUCTS_PATH = './products.local.json'
+} catch (err) {
+  products = require('./products.json')
+  PRODUCTS_PATH = './products.json'
+}
 
 const writeProducts = (products) => fs.writeFile(PRODUCTS_PATH, JSON.stringify(products, null, 2))
 
