@@ -16,7 +16,7 @@
     "lint:all:prettier": "npm run lint:prettier -- \"**/*.{js,json,css,scss,vue,html,md}\"",
     "lint": "run-s lint:all:*",
     "localserver": "cd server && npm start",
-    "postinstall": "cd server && npm install"
+    "postinstall": "cd server && npm install && cp products.json products.local.json"
   },
   "dependencies": {
     "axios": "^0.18.0",
