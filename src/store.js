@@ -3,6 +3,7 @@ import Vuex from 'vuex'
 import uuid from 'uuid'
 import createPersistedState from 'vuex-persistedstate'
 
+import api from 'api-client'
 import constants from '@/constants'
 
 Vue.use(Vuex)
@@ -49,8 +50,17 @@ export default new Vuex.Store({
         state.products.push(product)
       }
     },
+    [constants.PRODUCTS_SET](state, products) {
+      state.products = products
+    },
   },
-  actions: {},
+  actions: {
+    async [constants.PRODUCTS_FETCH](store) {
+      const products = await api.getProducts()
+      store.commit(constants.PRODUCTS_SET, products)
+      return products
+    },
+  },
   plugins: [
     createPersistedState({
       key: 'vueshop',

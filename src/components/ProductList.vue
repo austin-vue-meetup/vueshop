@@ -1,10 +1,15 @@
 <script>
+import constants from '@/constants'
+
 export default {
   name: 'ProductList',
   computed: {
     products() {
       return this.$store.state.products
     },
+  },
+  created() {
+    this.$store.dispatch(constants.PRODUCTS_FETCH)
   },
 }
 </script>
