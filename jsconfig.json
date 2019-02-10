@@ -2,6 +2,7 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
+      "api-client": ["src/api/local.js"],
       "@/*": ["*", "src/*"]
     }
   },
