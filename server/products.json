@@ -1,0 +1,20 @@
+[
+  {
+    "id": "acb123",
+    "title": "Shoes",
+    "description": "Snazzy shoes that go on your snazzy feet!",
+    "price": 99.99
+  },
+  {
+    "id": "def456",
+    "title": "Gloves",
+    "description": "Fancy gloves to protect the money makers.",
+    "price": 29.99
+  },
+  {
+    "id": "ghi789",
+    "title": "Pants",
+    "description": "Fancy dancy pantses.",
+    "price": 49.99
+  }
+]
