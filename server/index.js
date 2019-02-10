@@ -8,9 +8,20 @@ const PRODUCTS_PATH = './products.json'
 const writeProducts = (products) => fs.writeFile(PRODUCTS_PATH, JSON.stringify(products, null, 2))
 
 // Routes
+
+// Get all products
 fastify.get('/products', async (request, reply) => {
   try {
     return products
+  } catch (err) {
+    reply.status(500).send(`Could not load products. ${err.message}`)
+  }
+})
+
+// Get product by id
+fastify.get('/products/:productId', async (request, reply) => {
+  try {
+    return products.find((p) => p.id === request.params.productId)
   } catch (err) {
     reply.status(500).send(`Could not load products. ${err.message}`)
   }
