@@ -30,7 +30,12 @@ fastify.get('/products', async (request, reply) => {
 // Get product by id
 fastify.get('/products/:productId', async (request, reply) => {
   try {
-    return products.find((p) => p.id === request.params.productId)
+    const product = products.find((p) => p.id === request.params.productId)
+    if (product) {
+      reply.send(product)
+    } else {
+      reply.status(404).send({ msg: `Could not find product with id: ${request.params.productId}` })
+    }
   } catch (err) {
     reply.status(500).send(`Could not load products. ${err.message}`)
   }
