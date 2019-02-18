@@ -21,7 +21,7 @@ const writeProducts = (products) => fs.writeFile(PRODUCTS_PATH, JSON.stringify(p
 // Get all products
 fastify.get('/products', async (request, reply) => {
   try {
-    return products
+    reply.send(products)
   } catch (err) {
     reply.status(500).send(`Could not load products. ${err.message}`)
   }
