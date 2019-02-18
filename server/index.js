@@ -57,10 +57,10 @@ fastify.post('/products', async ({ body }, reply) => {
 })
 
 // Update product
-fastify.put('/products', async (request, reply) => {
+fastify.put('/products/:productId', async (request, reply) => {
   try {
     const product = request.body
-    const productId = product.id
+    const productId = request.params.productId
     const index = products.findIndex((p) => p.id === productId)
 
     if (index === -1) {
