@@ -1,5 +1,6 @@
 const fastify = require('fastify')()
 const fs = require('fs')
+const path = require('path')
 const uuid = require('uuid')
 
 let products, PRODUCTS_PATH
@@ -7,7 +8,7 @@ let products, PRODUCTS_PATH
 try {
   require.resolve('./products.local.json')
   products = require('./products.local.json')
-  PRODUCTS_PATH = './products.local.json'
+  PRODUCTS_PATH = path.resolve(__dirname, './products.local.json')
 } catch (err) {
   products = require('./products.json')
   PRODUCTS_PATH = './products.json'
