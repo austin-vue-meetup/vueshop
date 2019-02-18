@@ -1,5 +1,6 @@
 const fastify = require('fastify')()
 const fs = require('fs')
+const path = require('path')
 const uuid = require('uuid')
 
 let products, PRODUCTS_PATH
@@ -7,7 +8,7 @@ let products, PRODUCTS_PATH
 try {
   require.resolve('./products.local.json')
   products = require('./products.local.json')
-  PRODUCTS_PATH = './products.local.json'
+  PRODUCTS_PATH = path.resolve(__dirname, './products.local.json')
 } catch (err) {
   products = require('./products.json')
   PRODUCTS_PATH = './products.json'
@@ -20,7 +21,7 @@ const writeProducts = (products) => fs.writeFile(PRODUCTS_PATH, JSON.stringify(p
 // Get all products
 fastify.get('/products', async (request, reply) => {
   try {
-    return products
+    reply.send(products)
   } catch (err) {
     reply.status(500).send(`Could not load products. ${err.message}`)
   }
@@ -29,7 +30,12 @@ fastify.get('/products', async (request, reply) => {
 // Get product by id
 fastify.get('/products/:productId', async (request, reply) => {
   try {
-    return products.find((p) => p.id === request.params.productId)
+    const product = products.find((p) => p.id === request.params.productId)
+    if (product) {
+      reply.send(product)
+    } else {
+      reply.status(404).send({ msg: `Could not find product with id: ${request.params.productId}` })
+    }
   } catch (err) {
     reply.status(500).send(`Could not load products. ${err.message}`)
   }
@@ -51,10 +57,10 @@ fastify.post('/products', async ({ body }, reply) => {
 })
 
 // Update product
-fastify.put('/products', async (request, reply) => {
+fastify.put('/products/:productId', async (request, reply) => {
   try {
     const product = request.body
-    const productId = product.id
+    const productId = request.params.productId
     const index = products.findIndex((p) => p.id === productId)
 
     if (index === -1) {
@@ -70,9 +76,9 @@ fastify.put('/products', async (request, reply) => {
 })
 
 // Delete product
-fastify.delete('/products', async ({ body }, reply) => {
+fastify.delete('/products/:productId', async (request, reply) => {
   try {
-    const { productId } = body
+    const productId = request.params.productId
     const index = products.findIndex((p) => p.id === productId)
 
     if (index === -1) {

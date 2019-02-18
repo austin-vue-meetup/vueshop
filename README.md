@@ -6,7 +6,7 @@
 npm install
 ```
 
-### Compiles and hot-reloads for development
+### Compiles and hot-reloads for development, runs api server at [http://localhost:3000](http://localhost:3000)
 
 ```sh
 npm start
