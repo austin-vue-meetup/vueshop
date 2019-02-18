@@ -76,9 +76,9 @@ fastify.put('/products/:productId', async (request, reply) => {
 })
 
 // Delete product
-fastify.delete('/products', async ({ body }, reply) => {
+fastify.delete('/products/:productId', async (request, reply) => {
   try {
-    const { productId } = body
+    const productId = request.params.productId
     const index = products.findIndex((p) => p.id === productId)
 
     if (index === -1) {
