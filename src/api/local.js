@@ -1,8 +1,8 @@
 import axios from 'axios'
 import uuid from 'uuid'
 
-const deleteProduct = async (product) => {
-  const deletedProduct = await axios.delete('/api/products', product)
+const deleteProduct = async (productId) => {
+  const deletedProduct = await axios.delete('/api/products/' + productId)
   return deletedProduct.data
 }
 
