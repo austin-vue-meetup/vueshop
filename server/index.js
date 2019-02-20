@@ -14,7 +14,12 @@ try {
   PRODUCTS_PATH = './products.json'
 }
 
-const writeProducts = (products) => fs.writeFile(PRODUCTS_PATH, JSON.stringify(products, null, 2))
+const writeProducts = (products) =>
+  fs.writeFile(PRODUCTS_PATH, JSON.stringify(products, null, 2), (err) => {
+    if (err) {
+      console.log(err)
+    }
+  })
 
 // Routes
 
