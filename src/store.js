@@ -31,10 +31,20 @@ export default new Vuex.Store({
     },
   },
   actions: {
+    async [constants.PRODUCTS_DELETE](store, id) {
+      const deletedProduct = await api.deleteProduct(id)
+      store.commit(constants.PRODUCTS_DELETE, deletedProduct)
+      return deletedProduct
+    },
     async [constants.PRODUCTS_FETCH](store) {
       const products = await api.getProducts()
       store.commit(constants.PRODUCTS_SET, products)
       return products
+    },
+    async [constants.PRODUCTS_SAVE](store, product) {
+      const savedProduct = await api.saveProduct(product)
+      store.commit(constants.PRODUCTS_SAVE, savedProduct)
+      return savedProduct
     },
   },
   plugins: [
