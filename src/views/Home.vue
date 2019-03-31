@@ -1,17 +1,17 @@
 <template>
   <div>
     <h1>Behold Our Mighty Products!</h1>
-    <ProductList />
+    <ProductGrid />
   </div>
 </template>
 
 <script>
-import ProductList from '@/components/ProductList.vue'
+import ProductGrid from '@/components/ProductGrid.vue'
 
 export default {
   name: 'Home',
   components: {
-    ProductList,
+    ProductGrid,
   },
 }
 </script>

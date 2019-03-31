@@ -2,7 +2,7 @@
 import constants from '@/constants'
 
 export default {
-  name: 'ProductList',
+  name: 'ProductGrid',
   computed: {
     products() {
       return this.$store.state.products
