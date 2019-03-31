@@ -19,7 +19,7 @@ const getProduct = async (productId) => {
 const saveProduct = async (product) => {
   let savedProduct
   if (product.id) {
-    savedProduct = await axios.put('/api/products', product)
+    savedProduct = await axios.put('/api/products/' + product.id, product)
   } else {
     savedProduct = await axios.post('/api/products', { id: uuid(), ...product })
   }
